@@ -38,18 +38,19 @@ def webServer(port=13331):
       
       #opens the client requested file. 
       #Plenty of guidance online on how to open and read a file in python. How should you read it though if you plan on sending it through a socket?
-      f = open(filename[1:],  #fill in start   
-      "rb")  #fill in end   )
+      f = open(filename[1:], "rb")  #fill in start      #fill in end  
       
       #This variable can store the headers you want to send for any valid or invalid request.   What header should be sent for a response that is ok?    
       #Fill in start 
               
       #Content-Type is an example on how to send a header as bytes. There are more!
       outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
-      outputdata += 'HTTP/1.1 200 OK\r\n'
+      outputdata += "HTTP/1.1 200 OK\r\n"
       outputdata += "Connection: close\r\n"
       outputdata += "Server: SimplePythonServer\r\n"
       outputdata += "\r\n"
+
+      header = outputdata
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
  
@@ -64,8 +65,8 @@ def webServer(port=13331):
       #Send everything as one send command, do not send one line/item at a time!
 
       # Fill in start
-      response = (outputdata + body).encode()
-      connectionSocket.sendall(response)
+      response = header + body
+      connectionSocket.sendall(response.encode())
 
       # Fill in end
         
@@ -82,8 +83,8 @@ def webServer(port=13331):
       outputdata += "\r\n"
 
       body = "<html><body><h1>404 Not Found</h1></body></html>"
-      response = (outputdata + body).encode()
-      connectionSocket.sendall(response)
+      response = output + body
+      connectionSocket.sendall(response.encode())
       #Fill in end
 
 
