@@ -76,8 +76,8 @@ def webServer(port=13331):
       # Send response message for invalid request due to the file not being found (404)
       # Remember the format you used in the try: block!
       #Fill in start
-      outputdata = "HTTP/1.1 404 Not Found\r\n"
-      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += 'HTTP/1.1 404 Not Found\r\n'
       outputdata += "Connection: close\r\n"
       outputdata += "Server: SimplePythonServer\r\n"
       outputdata += "\r\n"
