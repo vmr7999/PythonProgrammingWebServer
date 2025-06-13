@@ -49,7 +49,7 @@ def webServer(port=13331):
       outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += 'HTTP/1.1 200 OK\r\n'
       outputdata += "Connection: close\r\n"
-      outputdata += "Server: EasyPythonServer\r\n"
+      outputdata += "Server: SimplePythonServer\r\n"
       outputdata += "\r\n"
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
@@ -65,8 +65,8 @@ def webServer(port=13331):
       #Send everything as one send command, do not send one line/item at a time!
 
       # Fill in start
-      response = outputdata + body
-      connectionSocket.send(response.encode())
+      response = (outputdata + body).encode()
+      connectionSocket.sendall(response)
 
       # Fill in end
         
@@ -77,14 +77,14 @@ def webServer(port=13331):
       # Remember the format you used in the try: block!
       #Fill in start
       outputdata = "HTTP/1.1 404 Not Found\r\n"
-      outputdata += "Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += "Connection: close\r\n"
       outputdata += "Server: SimplePythonServer\r\n"
       outputdata += "\r\n"
 
       body = "<html><body><h1>404 Not Found</h1></body></html>"
-      response = outputdata + body
-      connectionSocket.send(response.encode())
+      response = (outputdata + body).encode()
+      connectionSocket.sendall(response)
       #Fill in end
 
 
