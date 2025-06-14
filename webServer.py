@@ -47,7 +47,7 @@ def webServer(port=13331):
               
       #Content-Type is an example on how to send a header as bytes. There are more!
       outputdata = "HTTP/1.1 200 OK\r\n"
-      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += "Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += "Connection: close\r\n"
       outputdata += "Server: EasyPythonServer\r\n"
       outputdata += "\r\n"
@@ -80,7 +80,7 @@ def webServer(port=13331):
       # Remember the format you used in the try: block!
       #Fill in start
       outputdata = "HTTP/1.1 404 Not Found\r\n"
-      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += "Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += "Connection: close\r\n"
       outputdata += "Server: EasyPythonServer\r\n"
       outputdata += "\r\n"
