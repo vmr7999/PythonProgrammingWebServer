@@ -46,11 +46,17 @@ def webServer(port=13331):
       #Fill in start 
               
       #Content-Type is an example on how to send a header as bytes. There are more!
-      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
-      outputdata += 'HTTP/1.1 200 OK\r\n'
-      outputdata += "Connection: close\r\n"
-      outputdata += "Server: EasyPythonServer\r\n"
-      outputdata += "\r\n"
+      header = 'HTTP/1.1 200 OK\r\n'
+      header += "Content-Type: text/html; charset=UTF-8\r\n"
+      header += "Connection: close\r\n"
+      header += "Server: EasyPythonServer\r\n"
+      header += "\r\n"
+
+      body = f.read()
+      response = header.encode() + body
+
+      connectionSocket.sendall(response)
+      connectionSocket.close()
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
  
