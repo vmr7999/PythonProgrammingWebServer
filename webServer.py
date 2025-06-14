@@ -69,7 +69,7 @@ def webServer(port=13331):
       #Send everything as one send command, do not send one line/item at a time!
 
       # Fill in start
-      connectionSocket.sendall(reply)
+      connectionSocket.sendall(reply.encode())
       # Fill in end
         
       connectionSocket.close() #closing the connection socket
