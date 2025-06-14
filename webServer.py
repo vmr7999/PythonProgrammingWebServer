@@ -55,8 +55,6 @@ def webServer(port=13331):
       body = f.read()
       reply = outputdata.encode() + body
 
-      connectionSocket.sendall(reply)
-      connectionSocket.close()
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
  
@@ -70,10 +68,10 @@ def webServer(port=13331):
       #Send everything as one send command, do not send one line/item at a time!
 
       # Fill in start
-      #connectionSocket.sendall(outputdata)
+      connectionSocket.sendall(reply)
       # Fill in end
         
-      #connectionSocket.close() #closing the connection socket
+      connectionSocket.close() #closing the connection socket
       
     except Exception as e:
       # Send response message for invalid request due to the file not being found (404)
