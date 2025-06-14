@@ -46,14 +46,14 @@ def webServer(port=13331):
       #Fill in start 
               
       #Content-Type is an example on how to send a header as bytes. There are more!
-      header = 'HTTP/1.1 200 OK\r\n'
-      header += "Content-Type: text/html; charset=UTF-8\r\n"
-      header += "Connection: close\r\n"
-      header += "Server: EasyPythonServer\r\n"
-      header += "\r\n"
+      outputdata = "HTTP/1.1 200 OK\r\n"
+      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += "Connection: close\r\n"
+      outputdata += "Server: EasyPythonServer\r\n"
+      outputdata += "\r\n"
 
       body = f.read()
-      response = header.encode() + body
+      response = outputdata.encode() + body
 
       connectionSocket.sendall(response)
       connectionSocket.close()
@@ -80,9 +80,9 @@ def webServer(port=13331):
       # Remember the format you used in the try: block!
       #Fill in start
       outputdata = "HTTP/1.1 404 Not Found\r\n"
-      outputdata += "Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += "Connection: close\r\n"
-      outputdata += "Server: SimplePythonServer\r\n"
+      outputdata += "Server: EasyPythonServer\r\n"
       outputdata += "\r\n"
 
       body = "<html><body><h1>404 Not Found</h1></body></html>"
