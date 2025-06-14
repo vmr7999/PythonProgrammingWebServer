@@ -53,9 +53,9 @@ def webServer(port=13331):
       outputdata += "\r\n"
 
       body = f.read()
-      response = outputdata.encode() + body
+      reply = outputdata.encode() + body
 
-      connectionSocket.sendall(response)
+      connectionSocket.sendall(reply)
       connectionSocket.close()
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
@@ -86,8 +86,8 @@ def webServer(port=13331):
       outputdata += "\r\n"
 
       body = "<html><body><h1>404 Not Found</h1></body></html>"
-      response = outputdata + body
-      connectionSocket.send(response.encode())
+      reply = outputdata + body
+      connectionSocket.send(reply.encode())
       #Fill in end
 
 
