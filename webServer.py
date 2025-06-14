@@ -63,7 +63,8 @@ def webServer(port=13331):
       for i in f:      #for line in file
           
           body += i    #Fill in start - append your html file contents #Fill in end 
-      
+
+      reply = outputdata + body
       #Send the content of the requested file to the client (don't forget the headers you created)!
       #Send everything as one send command, do not send one line/item at a time!
 
