@@ -52,24 +52,23 @@ def webServer(port=13331):
       outputdata += "Server: EasyPythonServer\r\n"
       outputdata += "\r\n"
 
-      #body = f.read()
-      #reply = outputdata.encode() + body
+      body = f.read()
+      reply = outputdata.encode() + body
 
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
  
       #Fill in end
-      body = ""
-      for i in f:      #for line in file
+      #body = ""
+      #for i in f:      #for line in file
           
-          body += i    #Fill in start - append your html file contents #Fill in end 
+          #body += i    #Fill in start - append your html file contents #Fill in end 
 
-      reply = outputdata + body
       #Send the content of the requested file to the client (don't forget the headers you created)!
       #Send everything as one send command, do not send one line/item at a time!
 
       # Fill in start
-      connectionSocket.sendall(reply.encode())
+      connectionSocket.sendall(reply)
       # Fill in end
         
       connectionSocket.close() #closing the connection socket
