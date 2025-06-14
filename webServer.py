@@ -39,7 +39,7 @@ def webServer(port=13331):
       #opens the client requested file. 
       #Plenty of guidance online on how to open and read a file in python. How should you read it though if you plan on sending it through a socket?
       #Fill in start
-      f = open(filename[1:], "rb")
+      f = open(filename[1:], "r")
       #Fill in end
       
       #This variable can store the headers you want to send for any valid or invalid request.   What header should be sent for a response that is ok?    
@@ -52,17 +52,17 @@ def webServer(port=13331):
       outputdata += "Server: EasyPythonServer\r\n"
       outputdata += "\r\n"
 
-      body = f.read()
-      reply = outputdata.encode() + body
+      #body = f.read()
+      #reply = outputdata.encode() + body
 
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
  
       #Fill in end
-      #for i in f:  #for line in file
-        #Fill in start - append your html file contents
-        #outputdata += i
-        #Fill in end 
+      body = ""
+      for i in f:      #for line in file
+          
+          body += i    #Fill in start - append your html file contents #Fill in end 
       
       #Send the content of the requested file to the client (don't forget the headers you created)!
       #Send everything as one send command, do not send one line/item at a time!
